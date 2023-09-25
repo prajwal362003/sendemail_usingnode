@@ -1,0 +1,27 @@
+// Sending mail using nodemailer package
+const { error } = require("console");
+var http = require("http");
+var nodemailer = require("nodemailer");
+
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "prajwalkale003@gmail.com",
+    pass: "Prajwal@.in",
+  },
+});
+
+var mailOptions = {
+  from: "prajwalkale003@gmail.com",
+  to: "shubhampandharpatte30@gmail.com ",
+  subject: "Sending Email using Node.js",
+  text: "Hey,topper shubham",
+};
+
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Email Sent " + info.response);
+  }
+});
